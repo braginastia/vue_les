@@ -1,4 +1,4 @@
-const { sequelize } = require('C:\WEB\test_vue\Backend\connection.js')
+const { sequelize } = require('../connection')
 const { DataTypes } = require('sequelize')
 
 const auth = sequelize.define(
@@ -10,7 +10,7 @@ const auth = sequelize.define(
             primaryKey: true
         },
         uid: {
-            type: DataTypes,UUID
+            type: DataTypes.UUID
         },
         role: {
             type: DataTypes.TEXT
@@ -29,7 +29,7 @@ const auth = sequelize.define(
         },
     },
     {
-        tableName: 'auth',
+        tableName: 'auths',
         timestamps: true
     }
 )
@@ -38,5 +38,5 @@ async function get_auth_table() {
     await auth.sync()
     console.log('Синхронизация выполнена');
 }
-module.export = { auth, get_auth_table }
+module.exports = { auth, get_auth_table }
 

@@ -5,16 +5,16 @@ let cors = require('cors')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-const port = process.env.port
-const auths_routes = reqiure('./routes/auths.js')
-const users_routes = require('./routes/users')
+const port = process.env.PORT
+const auths_routes = require('./routes/auths')
+// const users_routes = require('./routes/')
 
 app.use(cors({
-    origin: ['http://localhost:8080/']
+    origin: ['http://localhost:8080']
 }))
 
 app.use('/api/auth', auths_routes)
-app.use('/api/user', users_routes)
+// app.use('/api/user', users_routes)
 
 app.use((error, request, response, next) => {
     if(error instanceof SyntaxError)

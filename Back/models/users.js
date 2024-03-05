@@ -1,4 +1,4 @@
-const { sequelize } = require('')
+const { sequelize } = require('../connection')
 const { DataTypes } = require('sequelize')
 const { auth } = require('./auths')
 
@@ -24,11 +24,11 @@ const user = sequelize.define(
 )
 user.belongsTo(auth, {
     as: 'Uid',
-    foreginKey: 'uid'
+    foreignKey: 'uid'
 })
 
 async function get_user_table() {
     await user.sync()
     console.log('Синхронизация выполнена');
 }
-module.export = { user, get_user_table }
+module.exports = { user, get_user_table }
