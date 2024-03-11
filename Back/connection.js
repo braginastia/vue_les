@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize')
-const sequelize = new Sequelize('postgres://postgres:asdF0987@localhost:5432/db1237') // тут вы должны указать свой пароль от бд
+const sequelize = new Sequelize('postgres://postgres:asdF0987@localhost:5432/db1237')
 
 async function connect() {
     try {
