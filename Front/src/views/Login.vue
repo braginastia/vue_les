@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <form @submit.prevent="">
+        <form @submit.prevent="go_login">
             <input type="email" class="form-input" placeholder="Введите email" v-model="email">
             <input type="password" class="form-input" placeholder="Введите пароль" v-model="password">
             <button type="submit" class="form-button">Войти</button>
@@ -10,12 +10,26 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
     data() {
         return {
             email: '',
             password: '',
             name: ''
+        }
+    },
+    methods: {
+        ...mapActions({
+            login: 'auth/login'
+        }),
+        go_login() {
+            const formData = {
+                email: this.email,
+                password: this.password
+            }
+            this.login(formData)
         }
     }
 }

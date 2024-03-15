@@ -1,1 +1,0 @@
-const verifySignUp = require('../../models/')

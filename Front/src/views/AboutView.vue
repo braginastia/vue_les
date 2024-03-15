@@ -1,11 +1,15 @@
 <template>
   <div class="about">
-    <PostCreate @create="createPost" />
-    <PostList :posts="posts" />
+    {{ 1265123 }}
+    <!-- <PostCreate @create="createPost" />
+    <PostList :posts="posts" /> -->
+
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
+
 import PostCreate from '@/components/PostCreate.vue'
 import PostList from '@/components/PostList.vue';
 
@@ -17,8 +21,19 @@ export default {
     }
   },  
   methods: {
+    ...mapActions({
+      getUserByUid: 'user/getUserByUid'
+    }),
     createPost(post) {
       this.posts.unshift(post)
+    }
+  },
+  mounted() {
+    // this.getUserByUid()
+  },
+  computed: {
+    user() {
+      return this.$store.state.user.user
     }
   },
   components: {
