@@ -2,6 +2,7 @@ import instance from "@/middlewares";
 
 export default {
     name: 'user',
+    namespaced: true,
     state: () => ({
         user: null
     }),
@@ -12,8 +13,8 @@ export default {
     },
     actions: {
         async getUserByUid({ commit }) {
-            const uid = localStorage.getItem('uid')
-            const user = await instance.get(`/api/user/${uid}`)
+            // const uid = localStorage.getItem('uid')
+            const user = await instance.get(`/api/users`)
             if (user) return commit('setUser', user.data)
             console.log(user.message);
         }

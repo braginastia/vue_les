@@ -1,8 +1,7 @@
 <template>
   <div class="about">
-    {{ 1265123 }}
-    <!-- <PostCreate @create="createPost" />
-    <PostList :posts="posts" /> -->
+    {{ user }}
+    
 
   </div>
 </template>
@@ -29,7 +28,7 @@ export default {
     }
   },
   mounted() {
-    // this.getUserByUid()
+    this.getUserByUid()
   },
   computed: {
     user() {

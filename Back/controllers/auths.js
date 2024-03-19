@@ -6,7 +6,7 @@ require('dotenv').config()
 const secret = process.env.SECRET
 const { v4: uuidv4 } = require('uuid')
 
-const ACCESS_LIFETIME = 30;
+const ACCESS_LIFETIME = 10;
 const REFRESH_LIFETIME = 60 * 60 * 24 *60;
 
 const createToken = (uid, lifetime) => jwt.sign({ uid }, secret, { expiresIn: lifetime })
@@ -47,10 +47,30 @@ exports.signin = async (req, res) => {
         if (!passwordIsValid) return res.status(414).send({ message: 'Invalid password' })
         const token = createAccess(user.uid)
         const token_refresh = createRefresh(user.uid)
-        await auth.update({AccessToken: token, RefreshToken: token_refresh}),
-            {wheree: {uid: user.uid}}
+        await auth.update({AccessToken: token, RefreshToken: token_refresh},
+            {where: {uid: user.uid}})
         return res.status(200).send({
             uid: user.uid,
+            accessToken: token,
+            refreshToken: token_refresh
+        })
+    } catch (error) {
+        return res.status(500).send({ message: error.message })
+    }
+}
+
+exports.changeAccess = async(req, res) => {
+    let token_refresh = req.body.headers['x-refresh-token']
+    try {
+        const { uid } = jwt.verify(token_refresh, secret)
+        const currentUser = await auth.findOne({where: {uid: uid}})
+        if(!currentUser) return res.status(404)
+        const token = createAccess(currentUser.uid)
+        token_refresh = createRefresh(currentUser.uid)
+        await auth.update({AccessToken: token, RefreshToken: token_refresh},
+            {where: {uid: currentUser.uid}})
+        return res.status(200).send({
+            uid: currentUser.uid,
             accessToken: token,
             refreshToken: token_refresh
         })
