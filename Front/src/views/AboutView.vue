@@ -91,6 +91,10 @@ export default {
   row-gap: 5dvh;
   font-size: 1.5rem;
 }
+.about h2 {
+  align-items: start;
+  justify-content: start;
+}
 .main {
   display: flex;
   flex-direction: column;
