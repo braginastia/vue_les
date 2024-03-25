@@ -1,12 +1,40 @@
 <template>
-    <div class="home">
-        <form @submit.prevent="goRegister">
-            <input type="email" class="form-input" placeholder="Введите email" v-model="email">
-            <input type="password" class="form-input" placeholder="Введите пароль" v-model="password">
-            <input type="text" class="form-input" placeholder="Введите имя" v-model="name">
-            <button type="submit" class="form-button">Регистрация</button>
-            <span>Уже есть аккаунт? <a href="/login">Войти</a></span>
-        </form>
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+            <div class="text-center lg:text-left">
+                <h1 class="text-5xl font-bold">Создать аккаунт</h1>
+                <p class="py-6">Если у вас уже есть аккаунт, то перейдите по <a href="/login" style="font-style: italic;">этой ссылке</a> и выполните вход :-)</p>
+            </div>
+            <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <form @submit.prevent="goRegister" class="card-body">
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input type="email" placeholder="Email" class="input input-bordered" v-model="email">
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Имя</span>
+                        </label>
+                        <input type="text" placeholder="Имя" class="input input-bordered" v-model="name">
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Пароль</span>
+                        </label>
+                        <input type="password" placeholder="Пароль" class="input input-bordered" v-model="password">
+                    </div>
+
+                    <div class="form-control mt-6">
+                        <button type="submit" class="btn btn-primary">Регистрация</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -39,7 +67,7 @@ export default {
 </script>
 <style>
 
-.home {
+/* .home {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -52,6 +80,6 @@ form {
     flex-direction: column;
     width: 400px;
     row-gap: 20px;
-}
+} */
 
 </style>

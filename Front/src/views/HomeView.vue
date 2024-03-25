@@ -11,7 +11,7 @@
             Поставить лайк
           </div>
           <div class="btn dislike" @click="addDislike">
-            <img src="../assets/like_739231.png" alt="dislike" width="32px">
+            <img src="../assets/like_739231.png" alt="dislike" width="32px" style="rotate: 180deg;">
             Поставить дизлайк
           </div>
         </div>
@@ -48,37 +48,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .window {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 70vw;
-    height: 300px;
-    background-color: #42b983;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    row-gap: 15px;
-  }
-  .window-label {
-    font-size: 1.5rem;
-  }
-  .btns {
-    display: flex;
-    flex-direction: row;
-    column-gap: 15px;
-    background-color: #fff;
-    border-radius: 6px;
-  }
-  .btn {
-    padding: 10px;
-    cursor: pointer;
-    border: #000 1px solid;
-    border-radius: 6px;
-  }
-  .dislike img {
-    transform: rotate(180deg);
-  }
-</style>

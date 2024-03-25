@@ -1,11 +1,30 @@
 <template>
-    <div class="home">
-        <form @submit.prevent="go_login">
-            <input type="email" class="form-input" placeholder="Введите email" v-model="email">
-            <input type="password" class="form-input" placeholder="Введите пароль" v-model="password">
-            <button type="submit" class="form-button">Войти</button>
-            <span>Нет аккаунта? <a href="/register">Зарегистрироваться</a></span>
-        </form>
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+            <div class="text-center lg:text-left">
+                <h1 class="text-5xl font-bold">Войти в аккаунт</h1>
+                <p class="py-6">Если вы у нас впревые или не создавали аккаунт, то перейдите по <a href="/register" style="font-style: italic;">этой ссылке</a> и создайте его, а затем возращайтесь :-)</p>
+            </div>
+            <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <form @submit.prevent="go_login" class="card-body">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input type="email" placeholder="email" class="input input-bordered" v-model="email">
+                    </div>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Пароль</span>
+                        </label>
+                        <input type="password" placeholder="пароль" class="input input-bordered" v-model="password">
+                    </div>
+                    <div class="form-control mt-6">
+                        <button class="btn btn-primary">Войти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -34,21 +53,3 @@ export default {
     }
 }
 </script>
-<style>
-
-.home {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100dvh;
-}
-form {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    row-gap: 20px;
-}
-
-</style>
