@@ -16,7 +16,7 @@
   <!-- <div class="navbar-center">
     
   </div> -->
-  <div class="navbar-end">
+  <div class="navbar-center">
     <a href="/"><img src="./assets/logo.png" alt="logotype" style="height: 5dvh;"></a>
   </div>
 </div>

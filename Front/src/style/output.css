@@ -1242,22 +1242,6 @@ html {
   justify-self: end;
 }
 
-.mockup-window {
-  position: relative;
-  overflow: hidden;
-  overflow-x: auto;
-  display: flex;
-  flex-direction: column;
-  border-radius: var(--rounded-box, 1rem);
-  padding-top: 1.25rem;
-}
-
-.mockup-window pre[data-prefix]:before {
-  content: attr(data-prefix);
-  display: inline-block;
-  text-align: right;
-}
-
 .navbar {
   display: flex;
   align-items: center;
@@ -1671,25 +1655,6 @@ html {
   margin-top: 0;
 }
 
-.mockup-window:before {
-  content: "";
-  margin-bottom: 1rem;
-  display: block;
-  aspect-ratio: 1 / 1;
-  height: 0.75rem;
-  flex-shrink: 0;
-  align-self: flex-start;
-  border-radius: 9999px;
-  opacity: 0.3;
-  box-shadow: 1.4em 0,
-        2.8em 0,
-        4.2em 0;
-}
-
-:is([dir="rtl"] .mockup-window):before {
-  align-self: flex-end;
-}
-
 .mockup-phone .display {
   overflow: hidden;
   border-radius: 40px;
@@ -1931,16 +1896,20 @@ html {
   display: flex;
 }
 
-.h-5 {
-  height: 1.25rem;
-}
-
 .h-32 {
   height: 8rem;
 }
 
+.h-5 {
+  height: 1.25rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
+}
+
+.w-32 {
+  width: 8rem;
 }
 
 .w-5 {
@@ -1949,18 +1918,6 @@ html {
 
 .w-52 {
   width: 13rem;
-}
-
-.w-24 {
-  width: 6rem;
-}
-
-.w-48 {
-  width: 12rem;
-}
-
-.w-32 {
-  width: 8rem;
 }
 
 .w-full {
@@ -1977,14 +1934,6 @@ html {
 
 .flex-col {
   flex-direction: column;
-}
-
-.place-items-center {
-  place-items: center;
-}
-
-.justify-center {
-  justify-content: center;
 }
 
 .rounded-box {
@@ -2009,11 +1958,6 @@ html {
   background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
 }
 
-.bg-base-300 {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
-}
-
 .bg-neutral {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
@@ -2021,16 +1965,6 @@ html {
 
 .p-2 {
   padding: 0.5rem;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
 }
 
 .py-6 {
@@ -2058,16 +1992,6 @@ html {
 
 .italic {
   font-style: italic;
-}
-
-.text-primary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
-}
-
-.text-secondary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-s,oklch(var(--s)/var(--tw-text-opacity)));
 }
 
 .text-neutral-content {

@@ -1,5 +1,5 @@
 <template>
-  <div class="stats shadow">
+  <div class="stats shadow" style="display: flex; justify-content: center; width: 80dvw; margin: 10dvh auto; box-shadow: 5px 5px 5px 1px rgba(65, 184, 131, .4);">
 
     <div class="stat">
       <div class="avatar placeholder">
@@ -9,10 +9,10 @@
       </div>
     </div>
 
-    <div class="stat">
+    <!-- <div class="stat">
       <div class="stat-value">{{ user?.email }}</div>
       <div class="stat-desc">Email пользователя</div>
-    </div>
+    </div> -->
 
     <div class="stat">
       <div class="stat-value">{{ user?.id }}</div>
