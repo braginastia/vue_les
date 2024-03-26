@@ -19,8 +19,8 @@
       <div class="stat-desc">ID пользователя</div>
       <div class="stat-value">{{ user?.uid }}</div>
       <div class="stat-desc">UID пользователя</div>
-      <div class="stat-value">{{ user?.role }}</div>
-      <div class="stat-desc">Role пользователя</div>
+      <div class="stat-value">{{ user?.email }}</div>
+      <div class="stat-desc">Email пользователя</div>
     </div>
 
     <div class="stat">

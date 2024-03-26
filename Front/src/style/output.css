@@ -1264,11 +1264,6 @@ html {
   flex-shrink: 0;
 }
 
-.navbar-end {
-  width: 50%;
-  justify-content: flex-end;
-}
-
 .stats {
   display: inline-grid;
   border-radius: var(--rounded-box, 1rem);

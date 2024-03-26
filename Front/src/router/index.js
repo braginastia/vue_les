@@ -3,10 +3,11 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '@/views/AboutView.vue'
 import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
+import instance from '@/middlewares'
 
 /*проверка авторизирован ли пользователь прописывается сдесь*/
 const routes = [
-  { // Мета добавления маршрута
+  { 
     path: '/',
     name: 'home',
     component: HomeView
@@ -14,7 +15,8 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: AboutView
+    component: AboutView,
+    meta: {auth: true}
   },
   {
     path: '/login',
@@ -31,6 +33,24 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach(async (to, from, next) => {
+  try {
+    const requireAuth = to.matched.some(record => record?.meta.auth)
+    if(requireAuth) {
+      const response = await instance.get('api/users')
+      if(response.status == 200) {
+        return next()
+      } else if(response.status == 401) {
+        return next('/login')
+      }
+    }
+    return next()
+  } catch (error) {
+    console.log(error.message)
+    return next('/login')
+  }
 })
 
 export default router
