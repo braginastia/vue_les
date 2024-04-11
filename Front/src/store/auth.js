@@ -32,6 +32,7 @@ export default {
     },
     namespaced: true,
     actions: {
+        
         async register({ }, {email, password, name}) {
             const data = JSON.stringify({email, password, name})
             console.log(data);
@@ -48,6 +49,7 @@ export default {
             router.push('/login')
             return
         },
+
         async login({commit}, {email, password}) {
             const data = JSON.stringify({email, password})
             console.log(data);
@@ -67,6 +69,7 @@ export default {
             router.push('/')
             return
         },
+
         async changeAccess({ }) {
             const response = await instance.post('/api/auth/change-access', {
                 headers: {
@@ -78,6 +81,7 @@ export default {
             localStorage.setItem('accessToken', result.accessToken)
             localStorage.setItem('refreshToken', result.refreshToken)
         },
+        
         logout({ commit }) {
             commit('setAuth', false)
             localStorage.removeItem('uid')
