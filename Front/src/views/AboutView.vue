@@ -9,11 +9,6 @@
       </div>
     </div>
 
-    <!-- <div class="stat">
-      <div class="stat-value">{{ user?.email }}</div>
-      <div class="stat-desc">Email пользователя</div>
-    </div> -->
-
     <div class="stat">
       <div class="stat-value">{{ user?.id }}</div>
       <div class="stat-desc">ID пользователя</div>
@@ -49,14 +44,14 @@ export default {
   },  
   methods: {
     ...mapActions({
-      getUserByUid: 'user/getUserByUid'
+      getUserByUid: 'user/getUserByUid',
     }),
     createPost(post) {
       this.posts.unshift(post)
     }
   },
   mounted() {
-    this.getUserByUid()
+    this.getUserByUid();
   },
   computed: {
     user() {

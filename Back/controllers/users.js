@@ -1,4 +1,5 @@
 const { user } = require('../models/users.js');
+const { auth } = require('../models/auths.js')
 
 const getUserByUid = async(req, res) => {
     try {

@@ -13,6 +13,9 @@ const createToken = (uid, lifetime) => jwt.sign({ uid }, secret, { expiresIn: li
 const createAccess = (uid) => createToken(uid, ACCESS_LIFETIME)
 const createRefresh = (uid) => createToken(uid, REFRESH_LIFETIME)
 
+let userName;
+let userEmail;
+
 exports.signup = async (req, res) => {
     try {
         const authed = await auth.create({
@@ -26,6 +29,10 @@ exports.signup = async (req, res) => {
             name: req.body.name,
             likes: 0
         })
+        
+        userName = req.body.name;
+        userEmail = req.body.email;
+
         return res.status(201).send({ message: 'registred', uid: createdUser.uid })
     } catch (error) {
         return res.status(400).send({message: error.message})
@@ -52,7 +59,9 @@ exports.signin = async (req, res) => {
         return res.status(200).send({
             uid: user.uid,
             accessToken: token,
-            refreshToken: token_refresh
+            refreshToken: token_refresh,
+            email: userEmail,
+            name: userName
         })
     } catch (error) {
         return res.status(500).send({ message: error.message })
@@ -78,3 +87,24 @@ exports.changeAccess = async(req, res) => {
         return res.status(500).send({ message: error.message })
     }
 }
+
+// exports.getInfoUserByUid = async(req,res) => {
+//     try {
+//         const user = await auth.findOne({ 
+//             where: { 
+//                 uid: uid 
+//             } 
+//         })
+//         if(!user) return res.status(404)
+//         const email = user.email;
+//         const role = user.role;
+//         console.log({ message: {role: user.role, email: user.email } })
+//         return res.json({
+//             role: role,
+//             email: email
+//         })
+        
+//     } catch (error) {
+//         return res.status(500).send({ message: error.message })
+//     }
+// }

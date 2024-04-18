@@ -4,8 +4,8 @@ import AboutView from '@/views/AboutView.vue'
 import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
 import instance from '@/middlewares'
+import AdminPanel from '@/views/AdminPanel.vue'
 
-/*проверка авторизирован ли пользователь прописывается сдесь*/
 const routes = [
   { 
     path: '/',
@@ -27,6 +27,12 @@ const routes = [
     path: '/register',
     name: 'register',
     component: Register
+  },
+  {
+    path: '/admin-panel',
+    name: 'admin-panel',
+    component: AdminPanel,
+    // meta: { :true }
   },
 ]
 
