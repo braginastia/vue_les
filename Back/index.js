@@ -5,13 +5,15 @@ const cors = require('cors')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+const options = {
+    origin: ['http://localhost:8080', 'http://localhost:3000'],
+};
+
+app.use(cors(options));
+
 const port = process.env.PORT
 const auths_routes = require('./routes/auths')
 const users_routes = require('./routes/users')
-
-app.use(cors({
-    origin: ['http://localhost:8080']
-}))
 
 app.use('/api/auth', auths_routes);
 app.use('/api/users', users_routes);
